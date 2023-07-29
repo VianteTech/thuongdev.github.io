@@ -1,5 +1,4 @@
 let location = window.location.href
-console.log(location)
 if(location.includes("settings")){
     let val=document.getElementById('time/clock'); 
     val.value = localStorage.getItem("time");
@@ -263,9 +262,13 @@ function RRclick(){
     else 
     {
         localStorage.ccount = 1;
+        if(localStorage.ccount==1){
+            window.location.reload()
+        }
         localStorage.setItem("Lang","vi")
         localStorage.setItem("back","Flamitio Background")  
         localStorage.setItem("theme","Dark Theme") 
+        localStorage.setItem("time","default") 
     }
 } 
 function save(){

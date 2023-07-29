@@ -7,9 +7,9 @@
         <script src="https://kit.fontawesome.com/fda81483dd.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <h1 style="text-align: center;position: flex;">Hayo There, My Friend!</h1>
-        <h1 style="text-align: center;position: flex;">This is The Settings Page</h1>
-        <h1 style="text-align: center;position: flex;"><a href="/index.html">Home</a>|<a href="/aboutme.html">About Me</a>|<a href="/myprojects.html">My Works</a></h1>
+        <h1 style="text-align: center;">Hayo There, My Friend!</h1>
+        <h1 style="text-align: center;">This is The Settings Page</h1>
+        <h1 style="text-align: center;"><a href="/index.html">Home</a>|<a href="/aboutme.html">About Me</a>|<a href="/myprojects.html">My Works</a></h1>
         <div style="text-align: center;">
             <ul>
                 <li>
@@ -26,9 +26,9 @@
         <h3 id="true" style="color:red; 
             white-space: nowrap;
             overflow: auto;
-            position: flex;"></h3>
+            "></h3>
         <p style="font-size: larger;font-weight: bold;">Time/Clock Settings:<br><br>
-            <select id="time/clock" style="margin:auto; position: flex;">
+            <select id="time/clock" style="margin:auto; ">
                 <option value="default">Default</option>
                 <option value="currenttime">Display Current Time (H:M:S)</option>
                 <option value="date&time">Display Current Time & Current Date</option>
@@ -36,11 +36,11 @@
             </select>
             <br>
         </p>
-        <label style="margin:auto; position: flex; font-weight: bold;">Without Words (Time/Clock):</label>
-        <input style="position:flex;" type="checkbox" id="checktime">
-        <label style="margin:auto; position: flex; font-weight: bold;">Display Mobile Menu:(Coming Soon)</label>
-        <input style="position:flex;" type="checkbox">
-        <h2 id="change1" style="position: flex;">
+        <label style="margin:auto;  font-weight: bold;">Without Words (Time/Clock):</label>
+        <input type="checkbox" id="checktime">
+        <label style="margin:auto;  font-weight: bold;">Display Mobile Menu:(Coming Soon)</label>
+        <input type="checkbox">
+        <h2 id="change1">
             *The first input is about theme color changing:<br>
             The words' color will change.<br>
             The words' background will change as well.<br>
@@ -67,19 +67,19 @@
             You just need to change <del>all</del> the words, don't change the "Background or Theme".<br>
             Thank you for enjoying the TB-Picker and also the Gmail Checker.<br>
         </h2>
-        <textarea class="tab" style="position: flex;" cols="40" rows="4" readonly>
+        <textarea class="tab" cols="40" rows="4" readonly>
 Hello There, my friend!, you can leave a comment about my website so that I can improve my website. 
 Maybe some new settings will roll out sooner or later :D.
 </textarea>
-        <textarea id="con" style="position: flex;" cols="40" rows="10"></textarea>
+        <textarea id="con" cols="40" rows="10"></textarea>
         <button id="submit">Submit</button>
-        <!-- <script type="text/javascript">
+        <script type="text/javascript">
             document.getElementById("submit").onclick=function(){
-                location.reload()
                 localStorage.clear()
+                location.reload()
             }
-        </script> -->
-        <h3 id="change" style="text-align: center;position: flex;">
+        </script>
+        <h3 id="change" style="text-align: center;">
             &copy;Copyright Reserved: Cao Xuân Thưởng - Year: 2023 - <label id="year"></label><br>
             Built mostly with Javascript, a bit of HTML and CSS.<br>
             <label id="time"></label>
@@ -94,12 +94,7 @@ Maybe some new settings will roll out sooner or later :D.
         </script>
         <script type="module">
             import {Theme,Back,displaytime,LoadLang} from './assests.js'
-            window.onload=Theme()
-            window.onload=document.getElementById('test').value=localStorage.getItem("theme").toString();
-            window.onload=Back()
-            window.onload=document.getElementById('text').value=localStorage.getItem("back").toString();
-            window.onload=LoadLang()
-            window.onload=displaytime()
+            window.onload=Theme(),LoadLang(),Back(),displaytime(),document.getElementById('test').value=localStorage.getItem("theme").toString(),document.getElementById('text').value=localStorage.getItem("back").toString();
         </script>
         <script>
             const regex= RegExp('@gmail.com$')
@@ -157,14 +152,13 @@ Maybe some new settings will roll out sooner or later :D.
                 background-color: var(--background);
             }
             body{
-                position:flex;
                 font-size: 20px;
                 color: var(--color);
                 background-color: var(--background);
                 background-image: var(--backimg);
             }
             #test{
-                position: flex;
+                
                 border: none;
                 text-decoration: none;
             }
@@ -188,6 +182,7 @@ Maybe some new settings will roll out sooner or later :D.
                 -webkit-box-shadow: none;
                 -moz-box-shadow: none;
                 box-shadow: none;
+                resize:none;
             }
             button{
                 display: grid;
