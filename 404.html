@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="Not found">
+		<title>Not Found</title>
+        <link rel="stylesheet" href="/assests.css"/>
+	</head>
+	<body>
+        <style>
+        body{
+            margin:auto 200px;
+        }
+        @media screen and (max-width:850px) {
+            body {
+                margin: auto 30px;
+            }
+        }
+        h1{
+            color: white;
+            left: 0;
+            margin-top: 0px;
+            position: absolute;
+            text-align: center;
+            top: 65%;
+            width: 100%;
+            animation: glow 4s linear infinite;
+        }
+        @keyframes glow {
+          0% { text-shadow: 0 0 10px pink , 0 0 20px pink, 0 0 30px pink, 0 0 40px pink; }
+          13.5% { text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red, 0 0 40px red; }
+          26% { text-shadow: 0 0 10px orange, 0 0 20px orange, 0 0 30px orange, 0 0 40px orange; }
+          38.5% { text-shadow: 0 0 10px yellow, 0 0 20px yellow, 0 0 30px yellow, 0 0 40px yellow; }
+          51% { text-shadow: 0 0 10px green, 0 0 20px green, 0 0 30px green, 0 0 40px green; }
+          63.5% { text-shadow: 0 0 10px turquoise, 0 0 20px turquoise, 0 0 30px turquoise, 0 0 40px turquoise; }
+          86% { text-shadow: 0 0 10px indigo, 0 0 20px indigo, 0 0 30px indigo, 0 0 40px indigo; }
+          100% { text-shadow: 0 0 10px violet, 0 0 20px violet, 0 0 30px violet, 0 0 40px violet; }
+        }
+        </style>
+        <div>
+            <h1>404<br>Not Found<br>
+            </h1>
+        </div>
+        <div style="text-align: center;">
+            <h3>Click on this link to redirect you to one of my websites :D.<br>
+            <a target="_blank" href="\README.html">My Website Page</a><br>
+            <a href="/index.html">Go back to my Home Page</a><br>
+            <a href="/aboutme.html">Go back to my About Me Page</a><br>
+            <a href="/myprojects.html">Go back to my Projects Page</a><br>
+            <a href="/settings.html">Go back to The Settings Page</a>
+            </h3>
+        </div>
+        <div style="text-align: center">
+            <h2>Seems like you're looking for something <a id="click" href="https://bit.ly/viantetechdev" target="_blank">...</a> </h2>
+            <br>
+            <br>
+        </div>
+        <div style="text-align: center; margin-top: -40px;">
+            <img src="/Working blob.gif">
+        </div>
+        <marquee style="color:red;"><strong>Looking for Blob Wob while Blob Wob is working? ... Well just explore the website, my friend - Said Blob Wob (Flamitio). Wait my friend, you need to find me from somewhere, and that's where I work :D to be honest. But have a good day, my friend! I'll continue my work of hacking. - Said Blob Wob (Flamitio) once again.</strong></marquee>
+        <marquee style="color:brown;animation:glow 3s linear infinite"><strong>&copy;Website is owned by Cao Xuân Thưởng - A Developer. Hola and Adios are my fav words.</strong></marquee>
+	</body>
+    <script type="module">
+        import {Back} from './assests.js'
+        window.onload=Back();
+    </script>
+</html>

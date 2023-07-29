@@ -1,0 +1,108 @@
+div ul{
+    text-align: center;
+    list-style-type: none;
+}
+div .l1,.l2,.l3{
+    margin: auto;
+}
+div .l1{
+    margin-right: 300px;
+}
+div .l2,.l3{
+    margin-top: -48px;
+}
+div .l3{
+    margin-left: 300px;
+}
+:root{
+    --color:white;
+    --background:black;
+    --backimg: linear-gradient(to left,white,aliceblue,pink);
+    --width:250;
+}
+body{
+    color: var(--color);
+    background-color: var(--background);
+    background-image: var(--backimg);
+}
+div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: transparent;
+}
+div h2 a:hover{
+    background-color:magenta;
+}
+hr{
+    border: 3px solid orange;
+    border-radius: 40px;
+}
+a{
+    text-decoration: none;
+}
+.auto{
+    margin: auto 30px;
+}
+main, footer{
+    margin: auto 200px;
+}
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    overflow: scroll;
+}
+.sidenav a{
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+@media screen and (max-width:850px) {
+    main, footer {
+        margin: auto 30px;
+    }
+    .auto{
+        margin: auto 10px;
+    }
+    :root{
+        --width: 790;
+    }
+}
+#change{
+    animation: change 4s linear infinite;
+}
+@keyframes change {
+    0% {color:pink}
+    13.5% {color:red}
+    26% {color:orange}
+    38.5% {color:yellow}
+    51% {color:green}
+    63.5% {color:turquoise}
+    86% {color:indigo}
+    100% {color:violet}
+}

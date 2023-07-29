@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>My Projects | Cao Xuan Thuong - A Full Stack Developer (Beginner)</title>
+        <script src="https://kit.fontawesome.com/fda81483dd.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <h1 style="text-align: center;position: flex;">Hayo There, My Friend!</h1>
+        <h1 style="text-align: center;position: flex;">This is The Settings Page</h1>
+        <h1 style="text-align: center;position: flex;"><a href="/index.html">Home</a>|<a href="/aboutme.html">About Me</a>|<a href="/myprojects.html">My Works</a></h1>
+        <div style="text-align: center;">
+            <ul>
+                <li>
+                    |Welcome to Beta Testers|&nbsp;
+                </li>
+                <li>
+                    |This is a Beta Page for colors|
+                </li>
+            </ul>
+        </div>
+        <input id="test" type="text" value="" placeholder="Theme Picker">
+        <input id="text" type="text" value="" placeholder="Background Picker">
+        <input id="tet" type="text" placeholder="Gmail Checker">
+        <h3 id="true" style="color:red; 
+            white-space: nowrap;
+            overflow: auto;
+            position: flex;"></h3>
+        <p style="font-size: larger;font-weight: bold;">Time/Clock Settings:<br><br>
+            <select id="time/clock" style="margin:auto; position: flex;">
+                <option value="default">Default</option>
+                <option value="currenttime">Display Current Time (H:M:S)</option>
+                <option value="date&time">Display Current Time & Current Date</option>
+                <option value="currentdate">Display Current Date</option>
+            </select>
+            <br>
+        </p>
+        <label style="margin:auto; position: flex; font-weight: bold;">Without Words (Time/Clock):</label>
+        <input style="position:flex;" type="checkbox" id="checktime">
+        <label style="margin:auto; position: flex; font-weight: bold;">Display Mobile Menu:(Coming Soon)</label>
+        <input style="position:flex;" type="checkbox">
+        <h2 id="change1" style="position: flex;">
+            *The first input is about theme color changing:<br>
+            The words' color will change.<br>
+            The words' background will change as well.<br>
+            You can change by editing and typing one of the following keywords:<br>
+            -Dark Theme is already marked as a default theme.<br>
+            -Fresh<br>
+            -Light<br>
+            -Royal<br>
+            *The second input is about background-image color changing:<br>
+            The background-image will change to one of the linear gradients :D.<br>
+            You can change by editing and typing one of the following keywords:<br>
+            -Flamitio Background is already marked as a default one.<br>
+            -Bold.<br>
+            -Playful.<br>
+            -Cool.<br>
+            -Warm.<br>
+            -Earthy.<br>
+            -Party.<br>
+            -Peaceful.<br>
+            *The third input is about my Gmail Checker:<br>
+            Just type a Gmail and it will check if it is a valid one :).<br>
+            Have fun, my friend!<br>
+            *Tips:<br>
+            You just need to change <del>all</del> the words, don't change the "Background or Theme".<br>
+            Thank you for enjoying the TB-Picker and also the Gmail Checker.<br>
+        </h2>
+        <textarea class="tab" style="position: flex;" cols="40" rows="4" readonly>
+Hello There, my friend!, you can leave a comment about my website so that I can improve my website. 
+Maybe some new settings will roll out sooner or later :D.
+</textarea>
+        <textarea id="con" style="position: flex;" cols="40" rows="10"></textarea>
+        <button id="submit">Submit</button>
+        <!-- <script type="text/javascript">
+            document.getElementById("submit").onclick=function(){
+                location.reload()
+                localStorage.clear()
+            }
+        </script> -->
+        <h3 id="change" style="text-align: center;position: flex;">
+            &copy;Copyright Reserved: Cao Xuân Thưởng - Year: 2023 - <label id="year"></label><br>
+            Built mostly with Javascript, a bit of HTML and CSS.<br>
+            <label id="time"></label>
+        </h3>
+        <script type="text/javascript">
+            window.onload=year()
+            document.getElementById('test').value="Dark Theme";
+            document.getElementById('text').value="Flamitio Background";
+            function year(){
+                document.getElementById("year").innerHTML=new Date().getFullYear();
+            }
+        </script>
+        <script type="module">
+            import {Theme,Back,displaytime,LoadLang} from './assests.js'
+            window.onload=Theme()
+            window.onload=document.getElementById('test').value=localStorage.getItem("theme").toString();
+            window.onload=Back()
+            window.onload=document.getElementById('text').value=localStorage.getItem("back").toString();
+            window.onload=LoadLang()
+            window.onload=displaytime()
+        </script>
+        <script>
+            const regex= RegExp('@gmail.com$')
+            document.getElementById("tet").addEventListener("input", function(e) {
+                let getvalue=e.target.value.trim();
+                if (regex.test(getvalue) && (getvalue.length-10)>4 && (getvalue.length-10)<24 )
+                document.getElementById('true').innerHTML=`Your Gmail: ${getvalue} is a valid gmail.`
+                else
+                document.getElementById('true').innerHTML=`Sorry, your Gmail: ${getvalue} is invalid.`;
+              });
+            let Currentlang=localStorage.getItem("Lang");
+            if( Currentlang==="vi"|| Currentlang==="vi-VN"){
+                document.getElementById("change1").innerHTML=
+                `
+                Bạn có thể đổi màu Theme bằng cách sửa chữ "Dark" thành một trong 3 theme sau:<br>
+                Light: Nền đen, chữ màu trắng.<br>
+                Royal: Nền và chữ theo kiểu màu xanh nước biển và màu hồng nhạt.<br>
+                Fresh: Nền và chữ theo kiểu màu xanh của tự nhiên.<br>
+                Và bạn có thể đổi màu background-image bằng cách sửa chữ "Flamitio" thành một trong 7 background-image sau:<br> 
+                Bold.<br>
+                Playful.<br>
+                Cool.<br>
+                Warm.<br>
+                Earthy.<br>
+                Party.<br>
+                Peaceful.<br>
+                Lưu ý: Theme mặc định là Dark Theme và Background-Image mặc định là Flamitio Background.<br>
+                Phần tiếp theo là Gmail Checker, là kiểm tra xem Gmail của bạn có hợp lệ không.<br>
+                Nhưng là phiên bản Basics nên sẽ tính dựa theo điều kiện được đặt ra.<br>
+                Have a nice day!<br>
+                `
+            }
+        </script>
+        <style>
+            #change{
+                animation: change 4s linear infinite;
+            }
+            @keyframes change {
+                0% {color:pink}
+                13.5% {color:red}
+                26% {color:orange}
+                38.5% {color:yellow}
+                51% {color:green}
+                63.5% {color:turquoise}
+                86% {color:indigo}
+                100% {color:violet}
+            }
+            :root{
+                --color:white;
+                --background:black;
+                --backimg: linear-gradient(to left,white,aliceblue,pink);
+            }
+            select{
+                color:var(--color);
+                background-color: var(--background);
+            }
+            body{
+                position:flex;
+                font-size: 20px;
+                color: var(--color);
+                background-color: var(--background);
+                background-image: var(--backimg);
+            }
+            #test{
+                position: flex;
+                border: none;
+                text-decoration: none;
+            }
+            ul li{
+                list-style-type: none;
+                font-size: 30px;
+            }
+            ul{
+                display: inline-flex;
+            }
+            .tab{
+                display:grid;
+            }
+            textarea {
+                background-color: var(--background);
+                color: var(--color);
+                border: none;
+                overflow: auto;
+                outline: none;
+                font-size: larger;
+                -webkit-box-shadow: none;
+                -moz-box-shadow: none;
+                box-shadow: none;
+            }
+            button{
+                display: grid;
+                border-radius: 20px;
+                color:var(--color);
+                background-color: var(--background);
+                border: solid red;
+                font-size: 25px;
+                width: 100px;
+                height: 35px;
+                box-shadow: 10px 10px 30px red;
+            }
+            input{
+                display:table;
+                background-color: var(--background);
+                color: var(--color);
+                border: none;
+                overflow: auto;
+                outline: none;
+                font-size: larger;
+                -webkit-box-shadow: none;
+                -moz-box-shadow: none;
+                box-shadow: none;
+            }
+            ::placeholder{
+                color:red;
+            }
+        </style>
+    </body>
+</html>
