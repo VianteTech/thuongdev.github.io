@@ -12,12 +12,12 @@ if(location.includes("settings")){
         localStorage.setItem("theme","Royal Theme")  
         Theme()
         }
-        else if(getvalue==="light theme"){
-        localStorage.setItem("theme","Light Theme")
+        else if(getvalue==="dark theme"){
+        localStorage.setItem("theme","Dark Theme")
         Theme()
         }
         else{
-        localStorage.setItem("theme","Dark Theme")  
+        localStorage.setItem("theme","Light Theme")  
         Theme()
         }
     });
@@ -69,13 +69,13 @@ export function Theme(){
     document.querySelector(":root").style.setProperty('--color', '#ffe5b4');
     document.querySelector(":root").style.setProperty('--background', '#00539C');   
     }
-    else if(theme==="Light Theme"){
-    document.querySelector(":root").style.setProperty('--color', 'black');
-    document.querySelector(":root").style.setProperty('--background', 'white');   
+    else if(theme==="Dark Theme"){
+    document.querySelector(":root").style.setProperty('--color', 'white');
+    document.querySelector(":root").style.setProperty('--background', 'black');   
     }
     else{
-    document.querySelector(":root").style.setProperty('--color', 'white');
-    document.querySelector(":root").style.setProperty('--background', 'black');
+    document.querySelector(":root").style.setProperty('--color', 'black');
+    document.querySelector(":root").style.setProperty('--background', 'white');
     }
 }
 export function Back(){
@@ -267,7 +267,7 @@ function RRclick(){
         }
         localStorage.setItem("Lang","vi")
         localStorage.setItem("back","Flamitio Background")  
-        localStorage.setItem("theme","Dark Theme") 
+        localStorage.setItem("theme","Light Theme") 
         localStorage.setItem("time","default") 
     }
 } 
