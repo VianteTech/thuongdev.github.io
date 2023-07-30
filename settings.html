@@ -20,6 +20,7 @@
                 </li>
             </ul>
         </div>
+        <h2>Input Settings:</h2>
         <input id="test" type="text" value="" placeholder="Theme Picker">
         <input id="text" type="text" value="" placeholder="Background Picker">
         <input id="tet" type="text" placeholder="Gmail Checker">
@@ -27,6 +28,7 @@
             white-space: nowrap;
             overflow: auto;
             "></h3>
+        <h2>Select Settings:</h2>
         <p style="font-size: larger;font-weight: bold;">Time/Clock Settings:<br><br>
             <select id="time/clock" style="margin:auto; ">
                 <option value="default">Default</option>
@@ -39,7 +41,7 @@
         <label style="margin:auto;  font-weight: bold;">Without Words (Time/Clock):</label>
         <input type="checkbox" id="checktime">
         <label style="margin:auto;  font-weight: bold;">Display Mobile Menu:(Coming Soon)</label>
-        <input type="checkbox">
+        <input type="checkbox" id="cobile">
         <h2 id="change1">
             *The first input is about theme color changing:<br>
             The words' color will change.<br>
@@ -86,15 +88,13 @@ Maybe some new settings will roll out sooner or later :D.
         </h3>
         <script type="text/javascript">
             window.onload=year()
-            document.getElementById('test').value="Dark Theme";
-            document.getElementById('text').value="Flamitio Background";
             function year(){
                 document.getElementById("year").innerHTML=new Date().getFullYear();
             }
         </script>
         <script type="module">
-            import {Theme,Back,displaytime,LoadLang} from './assests.js'
-            window.onload=Theme(),LoadLang(),Back(),displaytime(),document.getElementById('test').value=localStorage.getItem("theme").toString(),document.getElementById('text').value=localStorage.getItem("back").toString();
+            import {Palete,displaytime,LoadLang} from './assests.js'
+            window.onload=Palete(),LoadLang(),displaytime(),document.getElementById('test').value=localStorage.getItem("theme").toString(),document.getElementById('text').value=localStorage.getItem("back").toString();
         </script>
         <script>
             const regex= RegExp('@gmail.com$')
