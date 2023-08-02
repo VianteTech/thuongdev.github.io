@@ -1,3 +1,4 @@
+let nice;
 let location = window.location.href
 if(location.includes("settings")){
     document.getElementById('time/clock').value = localStorage.getItem("time");
@@ -176,10 +177,14 @@ export function Displaytime(){
 }
 export function MobileMenu(){
     document.getElementById("navbar").onclick=function(){
-        document.getElementById("mySidenav").style.width = "270px";
-    }
-    document.getElementById("closenav").onclick=function(){
+        if(!nice){
+        document.getElementById("mySidenav").style.width = "280px";
+        nice=true
+        }
+        else{
         document.getElementById("mySidenav").style.width = "0";
+        nice=false
+        }
     }
 }
 function RRclick(){
