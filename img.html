@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Host</title>
+</head>
+<body>
+    <h1>Welcome to The Image Shortener</h1>
+    <style>
+        h1{
+            text-align: center;
+        }
+        body{
+            color:white;
+            margin: auto 220px;
+            background-color: black;
+        }
+    </style>
+    <hr>    
+    <select id="select">
+        <option value="nothing">Please choose a file type to upload</option>
+        <option value="image">Image Only</option>
+        <option value="video">Video Only</option>
+    </select>
+    <br>
+    <input style="display:none" type="file" id="in" class="true" accept="image/*">
+    <input style="display:none" type="file" id="input" class="true" accept="video/mp4, video/mov">
+    <video style="display:none" id="video" width="320" height="240" controls></video>
+    <img style="display:none" id="img" height="200">
+    <script type="text/javascript">
+    document.getElementById("select").onchange=function(){
+        var select = document.getElementById("select").value
+        if(select.toString()=="image"){
+            document.getElementsByClassName("true")[0].style.display="block"
+            document.getElementsByClassName("true")[1].style.display="none"
+            document.getElementById("video").style.display="none"
+            document.getElementById("video").load()
+        }
+        else if(select.toString()=="nothing"){
+            document.getElementsByClassName("true")[0].style.display="none"
+            document.getElementsByClassName("true")[1].style.display="none"
+            document.getElementById("video").style.display="none"
+            document.getElementById("img").style.display="none"
+            document.getElementById("video").load()
+        }
+        else{
+            document.getElementById("img").style.display="none"
+            document.getElementsByClassName("true")[1].style.display="block"
+            document.getElementsByClassName("true")[0].style.display="none"
+
+            document.getElementById("input").addEventListener("change", function() {
+                    var media = URL.createObjectURL(this.files[0]);
+                    console.log(media)
+                    var video = document.getElementById("video");
+                    video.src = media;
+                    video.style.display = "block";
+                    video.play();
+            });
+        }
+    }
+    </script>
+</body>
+</html>
