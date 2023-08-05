@@ -35,7 +35,7 @@ if(location.includes("settings")){
     load();
     RRclick();
 }
-else if(location=="https://thuong.pages.dev"||location=="https://thuong.pages.dev/index"||location=="https://thuong.pages.dev/index.html"){
+else if(location=="https://thuong.pages.dev/"){
     document.getElementById("secret").addEventListener("dblclick",(e) => {
         document.getElementById("secret1").innerHTML=`<a href="/img.html">MCU-VIP</a>`
     });
