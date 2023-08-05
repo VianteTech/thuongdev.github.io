@@ -6,41 +6,56 @@
     <title>Image Host</title>
 </head>
 <body>
-    <h1>Welcome to My Completely useless Videos & Images Peeker</h1>
+    <h1>Welcome to My Completely Useless Videos & Images Peeker</h1>
+    <h3>Commonly known as MCU-VIP</h3>
     <style>
         h1{
             text-align: center;
+            display:flex;
         }
         body{
             color:white;
-            margin: auto 220px;
             background-color: black;
         }
+        #fileup{
+            color:red;
+            border: 2px solid blue;
+            border-radius: 20px;
+            font-size: larger;
+            font-weight: bolder;
+            background-color:black;
+        }
     </style>
-    <br>
-    <input type="file" id="input">
-    <video style="display:none" id="video" width="320" height="240" controls></video>
-    <img style="display:none;" id="img" height="200">
+    <label id="fileup" for="input">Upload your files</label>
+    <input style="display: none;" type="file" id="input" multiple="multiple">
+    <p>Video Files:</p>
+    <div id="box"></div>
+    <p>Image Files:</p>
+    <div id="box1"></div>
     <script type="text/javascript">
         document.getElementById("input").onchange = function () {
-            alert('Selected file: ' + this.value);
-            let filename=this.value.split(".")[1]
-            if(filename.includes("mp4")||filename.includes("mov")){
-                var media = URL.createObjectURL(this.files[0]);
-                var video = document.getElementById("video");
-                var image = document.getElementById("img");
-                video.src = media;
-                video.style.display = "block";
-                image.style.display = "none";
-            }
-            if(filename.includes("gif")||filename.includes("ico")||filename.includes("jpeg")||filename.includes("png")){
-                console.log(this.files)
-                var media = URL.createObjectURL(this.files[0]);
-                var video = document.getElementById("video");
-                var image = document.getElementById("img");
-                image.src = media;
-                image.style.display = "block";
-                video.style.display = "none";
+            for(let i=0;i<this.files.length;i++){
+                let filename=this.files[i].name
+                if(filename.includes("mp4")||filename.includes("mov")){
+                    const video = document.createElement('video');
+                    var media = URL.createObjectURL(this.files[i])
+                    video.src = media;
+                    video.controls = true;
+                    video.muted = false;
+                    video.height = 240;
+                    video.width = 320;
+                    const box = document.getElementById('box');
+                    box.appendChild(video);
+                    
+                }
+                else if(filename.includes("gif")||filename.includes("ico")||filename.includes("jpeg")||filename.includes("png")){
+                    const image = document.createElement('img');
+                    var media = URL.createObjectURL(this.files[i])
+                    image.src = media;
+                    image.height = 200;
+                    const box1 = document.getElementById('box1');
+                    box1.appendChild(image);
+                }
             }
         };
     </script>
