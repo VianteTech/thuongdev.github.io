@@ -1,5 +1,5 @@
-let nice;
-let location = window.location.href
+'use strict';
+let nice,location = window.location.href
 if(location.includes("settings")){
     document.getElementById('time/clock').value = localStorage.getItem("time");
     document.getElementById("test").addEventListener("input", function(e) {
@@ -34,6 +34,11 @@ if(location.includes("settings")){
     });
     load();
     RRclick();
+}
+else if(location=="https://thuong.pages.dev"||location=="https://thuong.pages.dev/index"||location=="https://thuong.pages.dev/index.html"){
+    document.getElementById("secret").addEventListener("dblclick",(e) => {
+        document.getElementById("secret1").innerHTML=`<a href="/img.html">MCU-VIP</a>`
+    });
 }
 export function Palete(arg1,arg2){
     localStorage.setItem(arg1,arg2);
@@ -94,7 +99,7 @@ export function displaytime(){
         day = d.getDate(),
         selector = document.getElementById('time/clock').value,
         Currentlang=localStorage.getItem("Lang");
-    if( Currentlang==="vi"|| Currentlang==="vi-VN"){
+    if(Currentlang==="vi"|| Currentlang==="vi-VN"){
         if(cb.checked){
             if(selector==="date&time")
                 TimeSelect("time",new Date().toLocaleString(),"date&time")
@@ -150,7 +155,7 @@ export function DisplayDevice(){
         content=document.getElementById("navbar"),
         con1=document.getElementById("v1"),
         con2=document.getElementById("v2");
-    if (window.screen.width <=385 && window.screen.width >=320 && window.screen.height>=480 && window.screen.height <=854) {
+    if (window.screen.width <=385 && window.screen.width >=320 && window.screen.height>=480 && window.screen.height <=854||JSON.parse(localStorage.getItem('cobile'))==true) {
         content.style.visibility="visible";
         con2.style.display="none";
         con1.style.display="block";
@@ -213,7 +218,9 @@ function RRclick(){
 } 
 function save(){
     localStorage.setItem('checktime', document.querySelector('#checktime').checked);
+    localStorage.setItem('cobile', document.querySelector('#cobile').checked);
 }
 function load(){    
     document.querySelector("#checktime").checked = JSON.parse(localStorage.getItem('checktime'));
+    document.querySelector("#cobile").checked = JSON.parse(localStorage.getItem('cobile'));
 }
