@@ -102,6 +102,9 @@ Maybe some new settings will roll out sooner or later :D.
                 let getvalue=e.target.value.trim();
                 if (regex.test(getvalue) && (getvalue.length-10)>4 && (getvalue.length-10)<24 )
                 document.getElementById('true').innerHTML=`Your Gmail: ${getvalue} is a valid gmail.`
+                else if(getvalue.length==0){
+                document.getElementById('true').innerHTML=""
+                }
                 else
                 document.getElementById('true').innerHTML=`Sorry, your Gmail: ${getvalue} is invalid.`;
               });
