@@ -201,6 +201,7 @@ function RRclick(){
             Background: localStorage.getItem("back").toString(),
             Theme: localStorage.getItem("theme").toString(),
             Time: localStorage.getItem("time").toString(),
+            MobileMenu: localStorage.getItem("cobile").toString(),
         }
         console.table(obj)
     }
@@ -214,6 +215,7 @@ function RRclick(){
         localStorage.setItem("back","Flamitio Background")  
         localStorage.setItem("theme","Light Theme") 
         localStorage.setItem("time","default") 
+        localStorage.setItem("cobile","false")
     }
 } 
 function save(){
