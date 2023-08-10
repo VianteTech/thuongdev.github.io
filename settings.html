@@ -6,7 +6,7 @@
         <title>My Projects | Cao Xuan Thuong - A Full Stack Developer (Beginner)</title>
         <script src="https://kit.fontawesome.com/fda81483dd.js" crossorigin="anonymous"></script>
     </head>
-    <body>
+    <body class="body">
         <h1 style="text-align: center;">Hayo There, My Friend!</h1>
         <h1 style="text-align: center;">This is The Settings Page</h1>
         <h1 style="text-align: center;"><a href="/index.html">Home</a>|<a href="/aboutme.html">About Me</a>|<a href="/myprojects.html">My Works</a>|<a href="/codingstats.html">Coding Stats</a></h1>
@@ -97,8 +97,8 @@ Maybe some new settings will roll out sooner or later :D.
             }
         </script>
         <script type="module">
-            import {Palete,displaytime,LoadLang} from './assests.js'
-            window.onload=Palete(),LoadLang(),displaytime(),document.getElementById('test').value=localStorage.getItem("theme").toString(),document.getElementById('text').value=localStorage.getItem("back").toString();
+            import {displaytime,LoadLang} from './assests.js'
+            window.onload=LoadLang(),displaytime(),document.getElementById('test').value=localStorage.getItem("themes").toString(),document.getElementById('text').value=localStorage.getItem("backimgs").toString();
         </script>
         <script>
             const regex= RegExp('@gmail.com$')

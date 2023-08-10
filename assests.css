@@ -23,7 +23,7 @@ div ul li:nth-child(3n-1){
     --backimg: linear-gradient(to left,white,aliceblue,pink);
     --width:250;
 }
-body{
+.body{
     color: var(--color);
     background-color: var(--background);
     background-image: var(--backimg);

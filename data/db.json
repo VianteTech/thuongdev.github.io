@@ -1,0 +1,66 @@
+{
+    "db":{
+        "roots":{
+            ":root":{
+                "Bold":{
+                    "--backimg":"linear-gradient(to right,#0F3443,#34E89E)"
+                },
+                "Flamitio":{
+                    "--backimg":"linear-gradient(to left,white,aliceblue,pink)"
+                },
+                "Playful":{
+                    "--backimg":"linear-gradient(to right,#12C2E9,#F64F59)"
+                },
+                "Warm":{
+                    "--backimg":"linear-gradient(to right,#FCCF31,#F55555)"
+                },
+                "Cool":{
+                    "--backimg":"linear-gradient(to right,#7F7FD5,#91EAE4)"
+                },
+                "Earthy":{
+                    "--backimg":"linear-gradient(to right,#31B7C2,#7BC393)"
+                },
+                "Party":{
+                    "--backimg":"linear-gradient(to right,#333399,#FF00CC)"
+                },
+                "Peaceful":{
+                    "--backimg":"linear-gradient(to right,#3E5151,#DECBA4)"
+                },
+                "Light":{
+                    "--color":"black",
+                    "--background":"white"
+                },
+                "Dark":{
+                    "--color":"white",
+                    "--background":"black"
+                },
+                "Fresh":{
+                    "--color":"#EDF5E1",
+                    "--background":"#5CDB95"
+                },
+                "Royal":{
+                    "--color":"#ffe5b4",
+                    "--background":"#00539C"
+                }
+            }
+        },
+        "assets":{
+            "themes":{
+                "fresh theme/fresh/freshtheme":":root/Fresh",
+                "royal theme/royal/royaltheme":":root/Royal",
+                "light theme/light/lighttheme":":root/Light",
+                "default/auto/dark/dark theme/darktheme":":root/Dark"
+            },
+            "backimgs":{
+                "bold background/bold/boldbackground":":root/Bold",
+                "warm background/warm/warmbackground":":root/Warm",
+                "cool background/cool/coolbackground":":root/Cool",
+                "playful background/playful/playfulbackground":":root/Playful",
+                "earthy background/earthy/earthybackground":":root/Earthy",
+                "party background/party/partybackground":":root/Party",
+                "peaceful background/peaceful/peacefulbackground":":root/Peaceful",
+                "default/auto/flamitio/flamitio background/flamitiobackground":":root/Flamitio"
+            }
+        }
+    }
+}

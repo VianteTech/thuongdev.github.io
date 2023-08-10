@@ -1,80 +1,103 @@
 'use strict';
-let nice,location = window.location.href
+let nice,location = window.location.href,val,val1,keys,root,roots,assets;
 if(location.includes("settings")){
-    document.getElementById('time/clock').value = localStorage.getItem("time");
-    document.getElementById("test").addEventListener("input", function(e) {
-        let getvalue=e.target.value.toLowerCase().trim();
-        if(getvalue==="fresh theme")
-        Palete("theme","Fresh Theme")
-        else if(getvalue==="royal theme")
-        Palete("theme","Royal Theme")  
-        else if(getvalue==="dark theme")
-        Palete("theme","Dark Theme")
-        else
-        Palete("theme","Light Theme")
-    });
-    document.getElementById("text").addEventListener("input", function(e) {
-        let getval=e.target.value.toLowerCase().trim();
-        if(getval==="bold background")
-        Palete("back","Bold Background")  
-        else if(getval==="playful background")
-        Palete("back","Playful Background")  
-        else if(getval==="warm background")
-        Palete("back","Warm Background")
-        else if(getval==="cool background")
-        Palete("back","Cool Background")
-        else if(getval==="earthy background")
-        Palete("back","Earthy Background")
-        else if(getval==="party background")
-        Palete("back","Party Background")
-        else if(getval==="peaceful background")
-        Palete("back","Peaceful Background")
-        else
-        Palete("back","Flamitio Background")
-    });
+    click();
     load();
-    RRclick();
+    document.getElementById('time/clock').value = localStorage.getItem("time");
 }
 else if(location=="https://thuong.pages.dev/"){
     document.getElementById("secret").addEventListener("dblclick",(e) => {
         document.getElementById("secret1").innerHTML=`<a href="/img.html">MCU-VIP</a>`
     });
 }
-export function Palete(arg1,arg2){
-    localStorage.setItem(arg1,arg2);
-    let theme=localStorage.getItem("theme"),
-        back=localStorage.getItem("back");
-    if(theme==="Fresh Theme")
-    changecss(':root','--color', '#EDF5E1','--background', '#5CDB95');   
-    else if(theme==="Royal Theme")
-    changecss(':root','--color', '#ffe5b4','--background', '#00539C');   
-    else if(theme==="Dark Theme")
-    changecss(':root','--color', 'white','--background', 'black');   
-    else
-    changecss(':root','--color', 'black','--background', 'white');
-    if(back==="Bold Background")
-    changecssproperties(':root','--backimg', 'linear-gradient(to right,#0F3443,#34E89E)');
-    else if(back==="Playful Background")
-    changecssproperties(':root','--backimg', 'linear-gradient(to right,#12C2E9,#F64F59)');
-    else if(back==="Warm Background")
-    changecssproperties(':root','--backimg', 'linear-gradient(to right,#FCCF31,#F55555)');
-    else if(back==="Cool Background")
-    changecssproperties(':root','--backimg', 'linear-gradient(to right,#7F7FD5,#91EAE4)');
-    else if(back==="Earthy Background")
-    changecssproperties(':root','--backimg', 'linear-gradient(to right,#31B7C2,#7BC393)');
-    else if(back==="Party Background")
-    changecssproperties(':root','--backimg', 'linear-gradient(to right,#333399,#FF00CC)');
-    else if(back==="Peaceful Background")
-    changecssproperties(':root','--backimg', 'linear-gradient(to right,#3E5151,#DECBA4)');
-    else
-    changecssproperties(':root','--backimg', 'linear-gradient(to left,white,aliceblue,pink)');
+const API_URL='/data/db.json',
+FetchDb = async() =>{
+    try{
+        const response = await fetch(API_URL)
+        root = await response.json()
+        roots= Object.values(root.db)[0]
+        assets= Object.values(root.db)[1]
+        assign("backimg",localStorage.getItem("backimgs"))
+        assign("themes",localStorage.getItem("themes"))
+        if(location.includes("settings")){
+            document.getElementById("text").addEventListener("input", function(e) {
+                val=(e.target.value).toLowerCase().trim()
+                check("backimgs",val)
+                assign("backimg",localStorage.getItem("backimgs"))
+            })
+            document.getElementById("test").addEventListener("input", function(e) {
+                val1=(e.target.value).toLowerCase().trim()
+                check("themes",val1)
+                assign("themes",localStorage.getItem("themes"))
+            })
+            document.getElementById("text").value=`${localStorage.getItem("backimgs").split("/")[1]} Background`,
+            document.getElementById("test").value=`${localStorage.getItem("themes").split("/")[1]} Theme`
+            document.getElementById('time/clock').value = localStorage.getItem("time");
+        }
+    }
+    catch(err){
+        console.log(err.stack)
+    }
 }
-function changecssproperties(arg1,arg2,arg3){
-    document.querySelector(arg1).style.setProperty(arg2, arg3);
+(async()=>await FetchDb())();
+function click(){
+    if (localStorage.ccount)
+        localStorage.ccount = Number(localStorage.ccount)+1;
+        // console.clear()
+        // const obj={
+        //     Language: localStorage.getItem("Lang").toString(),
+        //     Background: localStorage.getItem("backimgs").toString(),
+        //     Theme: localStorage.getItem("themes").toString(),
+        //     Time: localStorage.getItem("time").toString(),
+        //     MobileMenu: localStorage.getItem("cobile").toString(),
+        // }
+        // console.table(obj)
+    else 
+    {
+        localStorage.ccount = 1;
+        if(localStorage.ccount==1)
+            window.location.reload()
+        localStorage.setItem("backimgs",":root/Flamitio")
+        localStorage.setItem("themes",":root/Dark")
+        localStorage.setItem("Lang","vi")
+        localStorage.setItem("time","default") 
+        localStorage.setItem("cobile","false")
+    }
+} 
+function assign(arg1,arg2){
+    arg2=arg2.split("/")
+    let index=Object.keys(roots[arg2[0]])
+    let value=Object.values(roots[arg2[0]])
+    if(arg2[0]==":root"){
+        if(arg1=="themes"){
+            for(let i=0;i<index.length;i++){
+                if(arg2[1]==index[i]){
+                    document.querySelector(arg2[0]).style.setProperty(`--color`,value[i]["--color"]);
+                    document.querySelector(arg2[0]).style.setProperty(`--background`,value[i]["--background"]);
+                }
+            }
+        }
+        else if(arg1=="backimg"){
+            for(let i=0;i<index.length;i++){
+                if(arg2[1]==index[i]){
+                    document.querySelector(arg2[0]).style.setProperty(`--${arg1}`,value[i][`--${arg1}`]);
+                }
+            }
+        }
+    }
 }
-function changecss(arg,arg1,arg2,arg3,arg4){
-    document.querySelector(arg).style.setProperty(arg1, arg2);
-    document.querySelector(arg).style.setProperty(arg3, arg4);
+function check(arg1,arg2){
+    keys=new Array
+    for(let i=0;i<Object.keys(assets[arg1]).length;i++){
+        keys.push((Object.keys(assets[arg1])[i]).split("/"))
+    }
+    for(let i=0;i<keys.length;i++){
+        for(let j=0;j<keys[i].length;j++){
+            if(keys[i][j]==arg2){
+                localStorage.setItem(arg1,Object.values(assets[arg1])[i])
+            }
+        }
+    }
 }
 export function LoadLang(){
   let userLang = navigator.language || navigator.userLanguage; 
@@ -192,32 +215,6 @@ export function MobileMenu(){
         }
     }
 }
-function RRclick(){
-    if (localStorage.ccount) {
-        localStorage.ccount = Number(localStorage.ccount)+1;
-        console.clear()
-        const obj={
-            Language: localStorage.getItem("Lang").toString(),
-            Background: localStorage.getItem("back").toString(),
-            Theme: localStorage.getItem("theme").toString(),
-            Time: localStorage.getItem("time").toString(),
-            MobileMenu: localStorage.getItem("cobile").toString(),
-        }
-        console.table(obj)
-    }
-    else 
-    {
-        localStorage.ccount = 1;
-        if(localStorage.ccount==1){
-            window.location.reload()
-        }
-        localStorage.setItem("Lang","vi")
-        localStorage.setItem("back","Flamitio Background")  
-        localStorage.setItem("theme","Light Theme") 
-        localStorage.setItem("time","default") 
-        localStorage.setItem("cobile","false")
-    }
-} 
 function save(){
     localStorage.setItem('checktime', document.querySelector('#checktime').checked);
     localStorage.setItem('cobile', document.querySelector('#cobile').checked);
