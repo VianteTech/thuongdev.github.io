@@ -3,31 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Host</title>
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="/index.css"/> -->
 </head>
 <body>
     <h1>Welcome to My Completely Useless Videos & Images Peeker</h1>
     <h3>Commonly known as MCU-VIP</h3>
-    <style>
-        h1{
-            text-align: center;
-            display:flex;
-        }
-        body{
-            color:white;
-            background-color: black;
-        }
-        #fileup{
-            color:red;
-            border: 2px solid blue;
-            border-radius: 20px;
-            font-size: larger;
-            font-weight: bolder;
-            background-color:black;
-        }
-    </style>
     <label id="fileup" for="input">Upload your files</label>
     <input style="display: none;" type="file" id="input" multiple="multiple">
+    <form action="http://localhost:8080/example" method="POST">
+        Filename: <input type="text" class="send" name="fname" value=""><br>
+        Data Link: <input type="text" style="display:none" class="send" name="dlink" id="inputtext"><br>
+        <textarea id="textarea"></textarea>
+        <br>
+        <div class="tooltip">
+          <label onclick="Copy()" onmouseout="Out()">
+            <span class="tooltiptext" id="showmessage">Copy To clipboard</span>
+            <p style="
+            border-radius: 20px;
+            border:5px solid red;
+            color:orange;
+            ">Copy Text</p>
+          </label>
+        </div>
+        <br>
+       <button type="submit">Deploy To The World!</button>
+    </form>
     <p>Video Files:</p>
     <div id="box"></div>
     <p>Image Files:</p>
@@ -35,9 +36,21 @@
     <p>Text Documents:</p>
     <div id="box2"></div>
     <script type="text/javascript">
+        function Copy() {
+          var copyText = document.getElementById("inputtext");
+          copyText.select();
+          copyText.setSelectionRange(0, 99999);
+          navigator.clipboard.writeText(copyText.value);
+        }
+        function Out() {
+          document.getElementById("showmessage").innerHTML = "Copy to clipboard";
+        }
+        let objet,objet1;
         document.getElementById("input").onchange = function () {
+            file=this.files.length
             for(let i=0;i<this.files.length;i++){
                 let filename=this.files[i].name
+                objet1+=`|${this.files[i].name}`
                 if(filename.includes("mp4")
                     ||
                     filename.includes("mov")
@@ -97,8 +110,77 @@
                     box1.appendChild(detail);
                     box1.appendChild(pdf);
                 }
+                var fileToLoad = this.files[i];
+                var fileReader = new FileReader();
+                fileReader.onload = function(fileLoadedEvent) {
+                    var srcData = fileLoadedEvent.target.result;
+                    call(srcData)
+                }
+                fileReader.readAsDataURL(fileToLoad)
             }
         };
+        function call(obj1){
+            objet+=`|${obj1}`
+            document.getElementsByClassName("send")[0].value = objet1.toString().slice(10,objet1.length)
+            document.getElementsByClassName("send")[1].value = objet.toString().replace("undefined|", "")
+            document.getElementById("textarea").value=objet.toString().replace("undefined|", "")
+        }
     </script>
+    <style>
+        .tooltip {
+          position: relative;
+          display: inline-block;
+        }
+        .tooltip .tooltiptext {
+          visibility: hidden;
+          width: 140px;
+          background-color: #555;
+          color: #fff;
+          text-align: center;
+          border-radius: 6px;
+          padding: 5px;
+          position: absolute;
+          z-index: 1;
+          bottom: 150%;
+          left: 50%;
+          margin-left: -75px;
+          opacity: 0;
+          transition: opacity 0.3s;
+        }
+        textarea{
+            width:90%;
+            height:250px;
+        }
+        .tooltip .tooltiptext::after {
+          content: "";
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+          border-color: #555 transparent transparent transparent;
+        }
+        .tooltip:hover .tooltiptext {
+          visibility: visible;
+          opacity: 1;
+        }
+        h1{
+            text-align: center;
+            display:flex;
+        }
+        body{
+            color:white;
+            background-color: black;
+        }
+        #fileup{
+            color:red;
+            border: 2px solid blue;
+            border-radius: 20px;
+            font-size: larger;
+            font-weight: bolder;
+            background-color:black;
+        }
+    </style>
 </body>
 </html>
