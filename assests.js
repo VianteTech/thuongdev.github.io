@@ -10,6 +10,21 @@ else if(location=="https://thuong.pages.dev/"){
         document.getElementById("secret1").innerHTML=`<a href="/img.html">MCU-VIP</a>`
     });
 }
+else if(location.includes("aboutme")||location.includes("myprojects")){
+    let cols = document.getElementsByClassName("collapsible");
+    for (let i = 0; i < cols.length; i++) {
+        cols[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight){
+            content.style.maxHeight = null;
+            }
+            else {
+            content.style.maxHeight = content.scrollHeight + "px";
+            } 
+        });
+    }
+}
 const API_URL='/data/db.json',
 FetchDb = async() =>{
     try{

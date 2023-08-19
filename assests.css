@@ -100,3 +100,46 @@ main, footer{
     86% {color:indigo}
     100% {color:violet}
 }
+.collapsible {
+  background-color: var(--background);
+  color: var(--color);
+  cursor: pointer;
+  padding: 18px;
+  border: s;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.active, .collapsible:hover {
+  background-color: grey;
+}
+.collapsible:after {
+  content: '\002B';
+  color: var(--color);
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+.active:after {
+  content: "\2212";
+}
+.content {
+  padding: 0 18px;
+  margin-top: -21px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: var(--background);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.content h3 ul{
+  font-size: 30px;
+  color: blue;
+}
+.content h3 li{
+  font-size: 20px;
+  color:red;
+}

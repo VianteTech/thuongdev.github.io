@@ -11,24 +11,17 @@
     <h3>Commonly known as MCU-VIP</h3>
     <label id="fileup" for="input">Upload your files</label>
     <input style="display: none;" type="file" id="input" multiple="multiple">
-    <form action="http://localhost:8080/example" method="POST">
+    <form>
         Filename: <input type="text" class="send" name="fname" value=""><br>
         Data Link: <input type="text" style="display:none" class="send" name="dlink" id="inputtext"><br>
         <textarea id="textarea"></textarea>
         <br>
-        <div class="tooltip">
-          <label onclick="Copy()" onmouseout="Out()">
-            <span class="tooltiptext" id="showmessage">Copy To clipboard</span>
-            <p style="
-            border-radius: 20px;
-            border:5px solid red;
-            color:orange;
-            ">Copy Text</p>
-          </label>
-        </div>
-        <br>
-       <button type="submit">Deploy To The World!</button>
+        <label onclick="Copy()">
+          <p style="font-size: 20px; color:orange;"><b>Copy Text</b></p>
+        </label>
     </form>
+    <h3>Visit <a href="https://filehosts.onrender.com">https://filehosts.onrender.com</a>.</h3>
+    <h3>*Note:<br>As I'm using a free service, every new created file will be deleted every 20 minutes if there are no visitors using.<br>Meaning the file you upload will be temporary up on the web.</h3>
     <p>Video Files:</p>
     <div id="box"></div>
     <p>Image Files:</p>
@@ -41,9 +34,6 @@
           copyText.select();
           copyText.setSelectionRange(0, 99999);
           navigator.clipboard.writeText(copyText.value);
-        }
-        function Out() {
-          document.getElementById("showmessage").innerHTML = "Copy to clipboard";
         }
         let objet,objet1;
         document.getElementById("input").onchange = function () {
@@ -127,43 +117,9 @@
         }
     </script>
     <style>
-        .tooltip {
-          position: relative;
-          display: inline-block;
-        }
-        .tooltip .tooltiptext {
-          visibility: hidden;
-          width: 140px;
-          background-color: #555;
-          color: #fff;
-          text-align: center;
-          border-radius: 6px;
-          padding: 5px;
-          position: absolute;
-          z-index: 1;
-          bottom: 150%;
-          left: 50%;
-          margin-left: -75px;
-          opacity: 0;
-          transition: opacity 0.3s;
-        }
         textarea{
             width:90%;
             height:250px;
-        }
-        .tooltip .tooltiptext::after {
-          content: "";
-          position: absolute;
-          top: 100%;
-          left: 50%;
-          margin-left: -5px;
-          border-width: 5px;
-          border-style: solid;
-          border-color: #555 transparent transparent transparent;
-        }
-        .tooltip:hover .tooltiptext {
-          visibility: visible;
-          opacity: 1;
         }
         h1{
             text-align: center;
