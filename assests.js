@@ -72,8 +72,8 @@ function click(){
         localStorage.ccount = 1;
         if(localStorage.ccount==1)
             window.location.reload()
-        localStorage.setItem("backimgs",":root/Flamitio")
-        localStorage.setItem("themes",":root/Dark")
+        localStorage.setItem("backimgs",":root/Party")
+        localStorage.setItem("themes",":root/Light")
         localStorage.setItem("Lang","vi")
         localStorage.setItem("time","default") 
         localStorage.setItem("cobile","false")
