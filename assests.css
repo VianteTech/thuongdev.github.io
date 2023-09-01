@@ -18,9 +18,9 @@ div ul li:nth-child(3n-1){
 
 }
 :root{
-    --color:white;
-    --background:black;
-    --backimg: linear-gradient(to left,white,aliceblue,pink);
+    --color:black;
+    --background:white;
+    --backimg: linear-gradient(to right,#333399,#FF00CC);
     --width:250;
 }
 .body{
